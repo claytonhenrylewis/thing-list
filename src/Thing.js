@@ -1,6 +1,7 @@
 import React from 'react';
 import './Thing.css';
 import ContentEditable from 'react-contenteditable';
+import Actions from './Actions'
 
 const Thing = ({ thing, saveThing, removeThing }) => {
   const updateName = (e) => {
@@ -13,11 +14,7 @@ const Thing = ({ thing, saveThing, removeThing }) => {
       <input type="checkbox" value="on" />
       <div className="details">
         <ContentEditable className="name" html={thing.name} onChange={updateName}/>
-        <span className="actions">
-          <button className="remove" onClick={() => removeThing(thing)}>
-            <i className="fa fa-trash-o"></i>
-          </button>
-        </span>
+        <Actions thing={thing} removeThing={removeThing} />
       </div>
     </li>
   );
