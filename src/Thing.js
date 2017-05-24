@@ -2,7 +2,6 @@ import React from 'react';
 import './Thing.css';
 
 const Thing = (props) => {
-  console.log(props);
   return (
     <li className="Thing">
       <input type="checkbox" value="on" />
