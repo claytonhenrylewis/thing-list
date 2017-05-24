@@ -12,7 +12,6 @@
   border-bottom: none;
 }
 
-
 input:checked + .details {
   background:#F9F9F9;
   text-decoration: line-through;

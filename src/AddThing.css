@@ -1,3 +1,26 @@
 .AddThing {
   position: relative;
+  padding-left: 0;
+  max-width: 400px;
+  margin: 20px auto;
+  background: white;
+  border-radius: 5px;
+  -webkit-box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
+          box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
+}
+
+button {
+  font-family: 'helvetica neue', sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+  margin: 5px;
+}
+
+input {
+  font-family: 'helvetica neue', sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+  width: 270px;
+  height: 24px;
+  margin: 5px;
 }

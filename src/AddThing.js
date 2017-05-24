@@ -17,8 +17,10 @@ class AddThing extends React.Component{
 
   addNewThing(e) {
     e.preventDefault();
-    this.props.addHandler(e.target.querySelector('input').value);
-    e.target.reset();
+    if (e.target.querySelector('input').value) {
+      this.props.addHandler(e.target.querySelector('input').value);
+      e.target.reset();
+    }
   }
 }
 
