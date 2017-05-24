@@ -10,17 +10,17 @@ class App extends Component {
     },
   }
 
-  constructor(props) {
-    super(props);
-    this.removeThing = this.removeThing.bind(this);
-  }
-
   render() {
+    const actions = {
+      saveThing: this.saveThing,
+      removeThing: this.removeThing,
+    }
+
     return (
       <div className="App">
         <Header />
         <AddThingButton addThing={this.addThing}/>
-        <ThingList things={this.state.things} saveThing={this.saveThing}/>
+        <ThingList things={this.state.things} {...actions}/>
         
       </div>
     );
@@ -46,11 +46,10 @@ class App extends Component {
     }
   }
 
-  removeThing(thing) {
-    console.log('remove');
-    const state = {...this.state};
-    delete state.things[thing.id];
-    this.setState(state);
+  removeThing = (thing) => {
+    const things = {...this.state.things};
+    delete things[thing.id];
+    this.setState({things});
   }
 }
 
