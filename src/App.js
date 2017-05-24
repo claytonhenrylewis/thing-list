@@ -8,12 +8,10 @@ class App extends Component {
   state = {
     things: {
     },
-    newThing: '',
   }
 
   constructor(props) {
     super(props);
-    this.updateNewThing = this.updateNewThing.bind(this);
     this.removeThing = this.removeThing.bind(this);
   }
 
@@ -22,20 +20,21 @@ class App extends Component {
       <div className="App">
         <Header />
         <AddThingButton addThing={this.addThing}/>
-        <ThingList things={this.state.things} removeHandler={this.removeThing}/>
+        <ThingList things={this.state.things} saveThing={this.saveThing}/>
         
       </div>
     );
   }
 
-  updateNewThing = (e) => {
-    this.setState({ newThing: e.target.value });
+  saveThing = (thing) => {
+    const things = {...this.state.things};
+    things[thing.id] = thing;
+    this.setState({ things });
   }
 
   addThing = () => {
     const state = {...this.state};
     const newThing = this.thing();
-    state.newThing = newThing;
     state.things[newThing.id] = newThing;
     this.setState(state);
   }
