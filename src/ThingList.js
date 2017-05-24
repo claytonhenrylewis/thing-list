@@ -6,7 +6,7 @@ const ThingList = (props) => {
   return (
     <ul className="ThingList">
       {
-        Object.keys(props.things).map(thingId => <Thing thing={props.things[thingId]} key={thingId}/>)
+        Object.keys(props.things).map(thingId => <Thing thing={props.things[thingId]} key={thingId} removeHandler={props.removeHandler}/>)
       }
     </ul>
   );

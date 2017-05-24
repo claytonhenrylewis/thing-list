@@ -16,13 +16,14 @@ class App extends Component {
     super(props);
     this.addNewThing = this.addNewThing.bind(this);
     this.updateNewThing = this.updateNewThing.bind(this);
+    this.removeThing = this.removeThing.bind(this);
   }
 
   render() {
     return (
       <div className="App">
         <Header />
-        <ThingList things={this.state.things}/>
+        <ThingList things={this.state.things} removeHandler={this.removeThing}/>
         <AddThing addHandler={this.addNewThing}/>
       </div>
     );
@@ -33,7 +34,7 @@ class App extends Component {
   }
 
   addNewThing = (thing) => {
-    const state = {...this.state}
+    const state = {...this.state};
     state.n++;
     const newThing = {
       id: 'thing-' + (this.state.n),
@@ -42,8 +43,14 @@ class App extends Component {
     state.newThing = newThing;
     state.things[newThing.id] = newThing;
     this.setState(state);
-    console.log(this.state);
-  };
+  }
+
+  removeThing(thing) {
+    console.log('remove');
+    const state = {...this.state};
+    delete state.things[thing.id];
+    this.setState(state);
+  }
 }
 
 export default App;
