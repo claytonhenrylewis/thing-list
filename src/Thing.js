@@ -28,7 +28,8 @@ class Thing extends Component{
         <input type="checkbox" value="on" />
         <div className="details">
           <ContentEditable
-            className="name" html={thing.name}
+            className="name"
+            html={thing.name}
             onChange={this.updateName}
             ref={input => this.nameInput = input}
             onKeyPress={this.blurOnEnter}
