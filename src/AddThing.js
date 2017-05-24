@@ -6,6 +6,7 @@ class AddThing extends React.Component{
     super(props);
     this.addNewThing = this.addNewThing.bind(this);
   }
+  
   render() {
     return (
       <form className="AddThing" onSubmit={this.addNewThing}>
