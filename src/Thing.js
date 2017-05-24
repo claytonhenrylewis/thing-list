@@ -4,6 +4,10 @@ import ContentEditable from 'react-contenteditable';
 import Actions from './Actions'
 
 class Thing extends Component{
+  componentDidMount() {
+    this.nameInput.htmlEl.focus();
+  }
+
   updateName = (e) => {
     const {thing, saveThing} = this.props;
     thing.name = e.target.value;
@@ -16,7 +20,7 @@ class Thing extends Component{
       <li className="Thing">
         <input type="checkbox" value="on" />
         <div className="details">
-          <ContentEditable className="name" html={thing.name} onChange={this.updateName}/>
+          <ContentEditable className="name" html={thing.name} onChange={this.updateName} ref={input => this.nameInput = input}/>
           <Actions thing={thing} removeThing={removeThing} />
         </div>
       </li>
