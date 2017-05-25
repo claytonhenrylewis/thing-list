@@ -56,19 +56,13 @@ class App extends Component {
       id: `thing-${Date.now()}`,
       name: '',
       completed: false,
+      dueDate: null,
     }
   }
 
   removeThing = (thing) => {
     const things = {...this.state.things};
     things[thing.id] = null;
-    this.setState({things});
-  }
-
-  toggleCompleted = (thing) => {
-    thing.completed = !thing.completed;
-    const things = {...this.state.things};
-    things[thing.id] = thing;
     this.setState({things});
   }
 }

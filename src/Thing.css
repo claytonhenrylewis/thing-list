@@ -21,6 +21,10 @@ input[type="checkbox"] {
   margin: 20px;
 }
 
+input[type="date"] {
+  font-family: 'helvetica neue', sans-serif;
+}
+
 .Thing .details {
   margin: 0;
   padding: 20px;

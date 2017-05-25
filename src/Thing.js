@@ -16,6 +16,19 @@ class Thing extends Component{
     saveThing(thing);
   }
 
+  toggleCompleted = (e) => {
+    const {thing, saveThing} = this.props;
+    thing.completed = e.target.checked;
+    saveThing(thing)
+  }
+
+  updateDueDate = (e) => {
+    console.log(e.target.value);
+    const {thing, saveThing} = this.props;
+    thing.dueDate = e.target.value;
+    saveThing(thing);
+  }
+
   blurOnEnter = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
@@ -30,7 +43,7 @@ class Thing extends Component{
         <input
           type="checkbox"
           checked={thing.completed}
-          onClick={() => toggleCompleted(thing)}
+          onChange={this.toggleCompleted}
         />
         <div className="details">
           <ContentEditable
@@ -40,6 +53,7 @@ class Thing extends Component{
             ref={input => this.nameInput = input}
             onKeyPress={this.blurOnEnter}
           />
+          <input type="date" value={thing.dueDate} onChange={this.updateDueDate}/>
           <Actions thing={thing} removeThing={removeThing} />
         </div>
       </li>
