@@ -10,22 +10,16 @@ class Thing extends Component{
     }
   }
 
-  updateName = (e) => {
+  handleChange = (e) => {
     const {thing, saveThing} = this.props;
-    thing.name = e.target.value;
+    const field = e.currentTarget.getAttribute('name');
+    thing[field] = e.target.value;
     saveThing(thing);
   }
 
   toggleCompleted = (e) => {
     const {thing, saveThing} = this.props;
     thing.completed = e.target.checked;
-    saveThing(thing);
-  }
-
-  updateDueDate = (e) => {
-    console.log(e.target.value);
-    const {thing, saveThing} = this.props;
-    thing.dueDate = e.target.value;
     saveThing(thing);
   }
 
@@ -37,23 +31,30 @@ class Thing extends Component{
   }
 
   render() {
-    const {thing, removeThing, toggleCompleted} = this.props;
+    const {thing, removeThing} = this.props;
     return (
       <li className="Thing">
         <input
           type="checkbox"
+          name="completed"
           defaultChecked={thing.completed}
           onChange={this.toggleCompleted}
         />
         <div className="details">
           <ContentEditable
             className="name"
+            name="name"
             html={thing.name}
             onChange={this.updateName}
             ref={input => this.nameInput = input}
             onKeyPress={this.blurOnEnter}
           />
-          <input type="date" value={thing.dueDate} onChange={this.updateDueDate}/>
+          <input
+            type="date"
+            name="dueDate"
+            value={thing.dueDate}
+            onChange={this.handleChange}
+          />
           <Actions thing={thing} removeThing={removeThing} />
         </div>
       </li>
