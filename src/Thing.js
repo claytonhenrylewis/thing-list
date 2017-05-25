@@ -19,7 +19,7 @@ class Thing extends Component{
   toggleCompleted = (e) => {
     const {thing, saveThing} = this.props;
     thing.completed = e.target.checked;
-    saveThing(thing)
+    saveThing(thing);
   }
 
   updateDueDate = (e) => {
