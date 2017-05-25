@@ -24,10 +24,14 @@ class Thing extends Component{
   }
 
   render() {
-    const {thing, removeThing} = this.props;
+    const {thing, removeThing, toggleCompleted} = this.props;
     return (
       <li className="Thing">
-        <input type="checkbox" value="on" />
+        <input
+          type="checkbox"
+          checked={thing.completed}
+          onClick={() => toggleCompleted(thing)}
+        />
         <div className="details">
           <ContentEditable
             className="name"

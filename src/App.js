@@ -12,7 +12,6 @@ class App extends Component {
       {
         context: this,
         state: 'things',
-
       }
     )
   }
@@ -26,6 +25,7 @@ class App extends Component {
     const actions = {
       saveThing: this.saveThing,
       removeThing: this.removeThing,
+      toggleCompleted: this.toggleCompleted,
     }
 
     return (
@@ -55,12 +55,20 @@ class App extends Component {
     return {
       id: `thing-${Date.now()}`,
       name: '',
+      completed: false,
     }
   }
 
   removeThing = (thing) => {
     const things = {...this.state.things};
     things[thing.id] = null;
+    this.setState({things});
+  }
+
+  toggleCompleted = (thing) => {
+    thing.completed = !thing.completed;
+    const things = {...this.state.things};
+    things[thing.id] = thing;
     this.setState({things});
   }
 }
