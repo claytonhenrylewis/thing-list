@@ -5,7 +5,7 @@ import SignOut from './SignOut';
 import SignIn from './SignIn';
 import ThingList from './ThingList';
 import AddThingButton from './AddThingButton';
-import base from './base';
+import base, {auth} from './base';
 
 class App extends Component {
   state = {
@@ -37,7 +37,7 @@ class App extends Component {
 
     return (
       <div>
-        <SignOut />
+        <SignOut signOut={this.signOut}/>
         <AddThingButton addThing={this.addThing}/>
         <ThingList things={this.state.things} {...actions}/>
       </div>
@@ -83,6 +83,10 @@ class App extends Component {
 
   signedIn = () => {
     return this.state.uid;
+  }
+
+  signOut = () => {
+    auth.signOut().then(() => this.setState({uid: null}));
   }
 }
 
