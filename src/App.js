@@ -77,7 +77,7 @@ class App extends Component {
   }
 
   signedIn = () => {
-    return true;
+    return false;
   }
 }
 
