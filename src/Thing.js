@@ -42,7 +42,7 @@ class Thing extends Component{
       <li className="Thing">
         <input
           type="checkbox"
-          checked={thing.completed}
+          defaultChecked={thing.completed}
           onChange={this.toggleCompleted}
         />
         <div className="details">
