@@ -45,7 +45,7 @@ class Thing extends Component{
             className="name"
             name="name"
             html={thing.name}
-            onChange={this.updateName}
+            onChange={this.handleChange}
             ref={input => this.nameInput = input}
             onKeyPress={this.blurOnEnter}
           />
